@@ -25,5 +25,10 @@ export default createMuiTheme({
             borderColor: "white",
             backgroundColor: buttonBlue,
         },
+
+        textFieldStyle: {
+            color: "white",
+            fontFamily: "Roboto",
+        },
     }
 });

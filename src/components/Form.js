@@ -28,11 +28,13 @@ const useStyles = makeStyles((theme) => ({
     },
 
     TextField: {
+        ...theme.typography.textFieldStyle,
+        color: "white",
         width: '25ch',
     },
 
     buttonStyle: {
-        width: "25px",
+        margin: "1em",
         borderRadius: "50px",
         ...theme.typography.submitButton,
     }
