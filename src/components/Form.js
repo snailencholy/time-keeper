@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme, withTheme } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
 import FilledInput from '@material-ui/core/FilledInput';
@@ -13,9 +13,12 @@ import TextField from '@material-ui/core/TextField';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
 
 const useStyles = makeStyles((theme) => ({
-    root: {
+    containerStyle: {
+        backgroundColor: theme.palette.common.grey,
         display: 'flex',
         flexWrap: 'wrap',
     },
@@ -26,11 +29,18 @@ const useStyles = makeStyles((theme) => ({
 
     TextField: {
         width: '25ch',
+    },
+
+    buttonStyle: {
+        width: "25px",
+        borderRadius: "50px",
+        ...theme.typography.submitButton,
     }
 }));
 
 export default function Form() {
     const classes = useStyles();
+    const theme = useTheme();
 
     const [values, setValues] = React.useState({
         password: '',
@@ -50,7 +60,7 @@ export default function Form() {
     };
 
     return(
-        <div className={classes.root}>
+        <Grid container  className={classes.containerStyle}>
             <div>
                 <TextField
                 label="Hours"
@@ -94,9 +104,15 @@ export default function Form() {
                 />
             </div>
             <div>
-            <Button>Submit</Button>
+            <Button
+             variant="outlined"
+             className={classes.buttonStyle}
+             color={theme.palette.common.blue}
+            >
+                Submit
+            </Button>
             </div>
            
-        </div>
+        </Grid>
     );
 }
