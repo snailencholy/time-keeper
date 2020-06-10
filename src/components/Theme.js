@@ -20,7 +20,7 @@ export default createMuiTheme({
     },
     
     typography: {
-        submitButton: {
+        standardButton: {
             color: "white",
             borderColor: "white",
             backgroundColor: buttonBlue,
@@ -29,6 +29,15 @@ export default createMuiTheme({
         textFieldStyle: {
             color: "white",
             fontFamily: "Roboto",
+        },
+
+        h2: {
+            fontFamily: "Roboto",
+            fontWeight: "700",
+            fontSize: "2.5rem",
+            color: "white",
+            lineHeight: 1.5,
+            textAlign: "center"
         },
     }
 });
