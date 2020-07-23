@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const backgroundGrey = "#595454"
+const backgroundGrey = "#D7D7D7"
 const buttonBlue = "#0B72B9"
 
 export default createMuiTheme({
