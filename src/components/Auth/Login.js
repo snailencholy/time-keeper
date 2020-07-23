@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { grey } from '@material-ui/core/colors';
 
 import clock from '../../assets/better-clock.png';
+import Register from './Register';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -28,19 +29,21 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: "2em",
     }, 
 
-    registerButton: {
-
+    link: {
+        paddingTop: ".25em",
+        paddingLeft: "1em"
     },
 
 }))
 
 function Login () {
     const classes = useStyles()
+    
 
     return(
         <Grid container direction="column" alignContent="center" alignItems="center" className={classes.mainContainer}>
-            <Grid item alignItems="center">
-            <img src={clock} height="80" width="80"/>
+            <Grid item >
+            <img src={clock} height="80" width="80" alt=""/>
             </Grid>
             
             <form>
@@ -65,11 +68,8 @@ function Login () {
                             Submit
                         </Button>
                     </Grid>
-                    <Grid item>
-                        <Button
-                        >
-                            Register
-                        </Button>
+                    <Grid item className={classes.link}>
+                        <a href={Link}>Register</a>
                     </Grid>
                 </Grid>
             </form>
