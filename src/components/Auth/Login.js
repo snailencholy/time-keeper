@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
-import { grey } from '@material-ui/core/colors';
 
 import clock from '../../assets/better-clock.png';
-import Register from './Register';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -16,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: "10em",
     },
 
-    userName: {
+    email: {
         paddingTop: "2em",
         paddingBottom: "2em",
     },
@@ -29,16 +27,19 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: "2em",
     }, 
 
-    link: {
-        paddingTop: ".25em",
+    registerButton: {
         paddingLeft: "1em"
     },
 
 }))
 
-function Login () {
+
+export default function Login () {
     const classes = useStyles()
-    
+
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+ 
 
     return(
         <Grid container direction="column" alignContent="center" alignItems="center" className={classes.mainContainer}>
@@ -47,10 +48,12 @@ function Login () {
             </Grid>
             
             <form>
-                <Grid item className={classes.userName}>
+                <Grid item className={classes.email}>
                     <Input
-                    id="userName"
-                    placeholder="Username"
+                    id="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
                     />
                 </Grid>
                 <Grid item className={classes.password}>
@@ -58,6 +61,8 @@ function Login () {
                     id="password"
                     placeholder="Password"
                     type="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
                     />
                 </Grid>
                 <Grid container direction="row">
@@ -68,13 +73,11 @@ function Login () {
                             Submit
                         </Button>
                     </Grid>
-                    <Grid item className={classes.link}>
-                        <a href={Link}>Register</a>
+                    <Grid item className={classes.registerButton}>
+                        <Button component={Link} to="/register">Register</Button>
                     </Grid>
                 </Grid>
             </form>
         </Grid>
     )
 }
-
-export default Login;

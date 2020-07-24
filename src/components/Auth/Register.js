@@ -27,8 +27,7 @@ const useStyles = makeStyles((theme) => ({
         paddingRight: "2em",
     }, 
 
-    link: {
-        paddingTop: ".25em",
+    loginButton: {
         paddingLeft: "1em"
     },
 
@@ -78,8 +77,8 @@ function Register () {
                             Submit
                         </Button>
                     </Grid>
-                    <Grid item className={classes.link}>
-                        <a>Login</a>
+                    <Grid item className={classes.loginButton}>
+                        <Button component={Link} to="/login">Login</Button>
                     </Grid>
                 </Grid>
             </form>

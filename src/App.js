@@ -7,11 +7,18 @@ import Register from './components/Auth/Register';
 import Hours from './components/Hours';
 
 
+const authState = {
+  isAuthenticated: false,
+}
+
 function App() {
+
+  const [state, updateState] = React.useState(authState)
+
   return (
     <ThemeProvider theme={theme}>
        <BrowserRouter>
-          <Switch>
+          <Switch >
             <Route exact path="/" component={Hours}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/register" component={Register}/>
