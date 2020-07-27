@@ -81,14 +81,6 @@ function Register () {
 
             case 'passwordConfirmation':
                 setPasswordConifrmation(event.target.value)
-                if (password !== passwordConifrmation) {
-                    valid = false
-                    setPasswordConfHelper("Invalid password")
-                } else {
-                    valid = true
-                    setPasswordConfHelper("")
-                }
-
                 break;
             
             default: 
@@ -100,8 +92,8 @@ function Register () {
     const onSubmit = event => {
         if (password === passwordConifrmation && username && email) {
             console.log("submitted")
-        } else {
-            console.error("Please Fill out the form")
+        } else if (password !== passwordConifrmation) {
+            alert("Passwords do not match. Please make sure the password and password confirmation fields are the same.")
         }
         
     }
@@ -144,6 +136,7 @@ function Register () {
                     id="passwordConfirmation"
                     //error={setPasswordConfHelper.length !== 0}
                     helpertext={passwordConfHelper}
+                    error={passwordConfHelper.length !== 0}
                     placeholder="Password Confirmation"
                     type="password"
                     onChange={onChange}
