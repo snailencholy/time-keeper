@@ -38,7 +38,10 @@ export default function Login () {
     const classes = useStyles()
 
     const [email, setEmail] = useState('')
+    const [emailHelper, setEmailHelper] = useState('')
+
     const [password, setPassword] = useState('')
+    const [passwordHelper, setPasswordHelper] = useState('')
  
 
     return(

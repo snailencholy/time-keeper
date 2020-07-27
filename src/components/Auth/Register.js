@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
@@ -36,6 +36,76 @@ function Register () {
 
     const classes = useStyles()
 
+    const [username, setUsername] = useState('')
+    const [usernameHelper, setUsernameHelper] = useState('')
+
+    const [email, setEmail] = useState('')
+    const [emailHelper, setEmailHelper] = useState('')
+
+    const [password, setPassword] = useState('')
+    const [passwordHelper, setPasswordHelper] = useState('')
+
+    const [passwordConifrmation, setPasswordConifrmation] = useState('')
+    const [passwordConfHelper, setPasswordConfHelper] = useState('')
+
+    const onChange = event => {
+        let valid;
+
+        switch (event.target.id) {
+            case 'userName':
+                setUsername(event.target.value)
+                break;
+
+            case 'email':
+                setEmail(event.target.value)
+                valid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(event.target.value)
+
+                if (!valid) {
+                    setEmailHelper("Invalid Email")
+                } else {
+                    setEmailHelper("")
+                }
+
+                break;
+
+            case 'password':
+                setPassword(event.target.value)
+                valid = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(event.target.value)
+
+                if(!valid) {
+                    setPasswordHelper("invalid password")
+                } else {
+                    setPasswordHelper("")
+                }
+                break;
+
+            case 'passwordConfirmation':
+                setPasswordConifrmation(event.target.value)
+                if (password !== passwordConifrmation) {
+                    valid = false
+                    setPasswordConfHelper("Invalid password")
+                } else {
+                    valid = true
+                    setPasswordConfHelper("")
+                }
+
+                break;
+            
+            default: 
+                break;
+        }
+    }
+
+
+    const onSubmit = event => {
+        if (password === passwordConifrmation && username && email) {
+            console.log("submitted")
+        } else {
+            console.error("Please Fill out the form")
+        }
+        
+    }
+
     return(
         <Grid container direction="column" alignContent="center" alignItems="center" className={classes.mainContainer}>
             <Grid item >
@@ -46,33 +116,45 @@ function Register () {
                 <Grid item className={classes.userName}>
                     <Input
                     id="userName"
+                    onChange={onChange}
                     placeholder="Username"
                     />
                 </Grid>
                 <Grid item className={classes.password}>
                     <Input
                     id="email"
+                    error={emailHelper.length !== 0}
+                    helpertext={emailHelper}
                     placeholder="Email"
+                    onChange={onChange}
                     />
                 </Grid>
                 <Grid item className={classes.password}>
                     <Input
                     id="password"
+                    error={passwordHelper.length !== 0}
+                    helpertext={passwordHelper}
                     placeholder="Password"
                     type="password"
+                    onChange={onChange}
                     />
                 </Grid>
                 <Grid item className={classes.password}>
                     <Input
                     id="passwordConfirmation"
+                    //error={setPasswordConfHelper.length !== 0}
+                    helpertext={passwordConfHelper}
                     placeholder="Password Confirmation"
                     type="password"
+                    onChange={onChange}
                     />
                 </Grid>
                 <Grid container direction="row">
                     <Grid item>
                         <Button 
                         className={classes.submitButton}
+                        id="submitButton"
+                        onClick={onSubmit}
                         >
                             Submit
                         </Button>
