@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
@@ -27,6 +27,28 @@ const useStyles = makeStyles((theme) => ({
 export default function Hours() {
     const classes = useStyles();
 
+    const [hoursIn, setHoursIn] = useState("")
+    const [minutesIn, setMinutesIn] = useState("")
+    const [hoursOut, setHoursOut] = useState("")
+    const [minutesOut, setMinutesOut] = useState("")
+
+    const onChange = event => {
+        
+        switch(event.target.id) {
+            case "timeInHour":
+                break;
+            case "timeInMinutes":
+                break;
+            case "timeOutHour":
+                break;
+            case "timeOutMinutes":
+                break;
+            default: 
+                break;
+        }
+
+    }
+
     return(
         <Grid container direction="column" alignContent="center" className={classes.mainContainer}>
             <form>
@@ -36,12 +58,14 @@ export default function Hours() {
                         <Input
                         id="timeInHour"
                         placeholder="Hour"
+                        onChange={onChange}
                         />
                     </Grid>
                     <Grid item>
                         <Input
                         id="timeInMinutes"
                         placeholder="Minutes"
+                        onChange={onChange}
                         />
                     </Grid>
                 </Grid>
@@ -51,12 +75,14 @@ export default function Hours() {
                         <Input
                         id="timeOutHour"
                         placeholder="Hour"
+                        onChange={onChange}
                         />
                     </Grid>
                     <Grid item>
                         <Input
                         id="timeOutMinutes"
                         placeholder="Minutes"
+                        onChange={onChange}
                         />
                     </Grid>
                 </Grid>

@@ -5,7 +5,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
-import clock from '../../assets/better-clock.png';
+import clock from '../../assets/correct-clock.png';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -44,6 +44,18 @@ export default function Login () {
     const [passwordHelper, setPasswordHelper] = useState('')
  
 
+
+    const onSubmit = event => {
+        if (password && email) {
+            console.log("submitted")
+        }
+    }
+
+    const validate = () => {
+        //todo: validate.
+        console.log("In progress")
+    }
+
     return(
         <Grid container direction="column" alignContent="center" alignItems="center" className={classes.mainContainer}>
             <Grid item >
@@ -72,6 +84,7 @@ export default function Login () {
                     <Grid item>
                         <Button 
                         className={classes.submitButton}
+                        onClick={onSubmit}
                         >
                             Submit
                         </Button>

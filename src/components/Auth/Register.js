@@ -5,7 +5,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 
-import clock from '../../assets/better-clock.png';
+import clock from '../../assets/correct-clock.png';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -94,6 +94,8 @@ function Register () {
             console.log("submitted")
         } else if (password !== passwordConifrmation) {
             alert("Passwords do not match. Please make sure the password and password confirmation fields are the same.")
+        } else {
+            alert("Not submitted, please fill the form out.")
         }
         
     }
@@ -110,6 +112,7 @@ function Register () {
                     id="userName"
                     onChange={onChange}
                     placeholder="Username"
+                    required
                     />
                 </Grid>
                 <Grid item className={classes.password}>
@@ -118,6 +121,7 @@ function Register () {
                     error={emailHelper.length !== 0}
                     helpertext={emailHelper}
                     placeholder="Email"
+                    required
                     onChange={onChange}
                     />
                 </Grid>
@@ -128,6 +132,7 @@ function Register () {
                     helpertext={passwordHelper}
                     placeholder="Password"
                     type="password"
+                    required
                     onChange={onChange}
                     />
                 </Grid>
@@ -139,6 +144,7 @@ function Register () {
                     error={passwordConfHelper.length !== 0}
                     placeholder="Password Confirmation"
                     type="password"
+                    required
                     onChange={onChange}
                     />
                 </Grid>
