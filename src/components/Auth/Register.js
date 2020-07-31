@@ -35,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
 function Register () {
 
     const classes = useStyles()
+    const user = {
+        userName: "",
+        email: "",
+        password: "",
+    }
 
     const [username, setUsername] = useState('')
     const [usernameHelper, setUsernameHelper] = useState('')
@@ -92,6 +97,12 @@ function Register () {
     const onSubmit = event => {
         if (password === passwordConifrmation && username && email) {
             console.log("submitted")
+            let newUser = {
+                userName: username,
+                email: email,
+                password: password,
+            }
+            //console.log(newUser)
         } else if (password !== passwordConifrmation) {
             alert("Passwords do not match. Please make sure the password and password confirmation fields are the same.")
         } else {
