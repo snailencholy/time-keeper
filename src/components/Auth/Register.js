@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 
 import clock from '../../assets/correct-clock.png';
 
+
+const fs = require('fs');
+
 const useStyles = makeStyles((theme) => ({
 
     mainContainer: {
@@ -35,11 +38,6 @@ const useStyles = makeStyles((theme) => ({
 function Register () {
 
     const classes = useStyles()
-    const user = {
-        userName: "",
-        email: "",
-        password: "",
-    }
 
     const [username, setUsername] = useState('')
     const [usernameHelper, setUsernameHelper] = useState('')
@@ -102,6 +100,15 @@ function Register () {
                 email: email,
                 password: password,
             }
+            
+            // let data = JSON.stringify(newUser, null, 2);
+
+            // fs.writeFile('newUser.json', data, (err) => {
+            //     if (err) throw err;
+            //     console.log("file written");
+            // })
+            //This wont work because it's running in the browser
+            //have to actually push to a database.
             //console.log(newUser)
         } else if (password !== passwordConifrmation) {
             alert("Passwords do not match. Please make sure the password and password confirmation fields are the same.")
