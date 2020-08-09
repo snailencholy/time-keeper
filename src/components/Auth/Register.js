@@ -101,14 +101,7 @@ function Register () {
                 email: email,
                 password: password,
             }
-            mongoose
-            .connect("mongodb+srv://Paul:ogIY0lMxV43MVH31@testing.35ywp.mongodb.net/time-keeper?retryWrites=true&w=majority", {
-                useNewUrlParser: true,
-                useCreateIndex: true,
-                useFindAndModify: false
-            })
-            .then(() => console.log("WORKED"))
-            .catch(err => console.log(err));
+            
             // let data = JSON.stringify(newUser, null, 2);
 
             // fs.writeFile('newUser.json', data, (err) => {
