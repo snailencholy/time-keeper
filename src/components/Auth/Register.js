@@ -4,11 +4,12 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
+//import db from '../../db';
 
 import clock from '../../assets/correct-clock.png';
 
+import mongoose from "mongoose"; //Not going to work. need to build a backend first.
 
-const fs = require('fs');
 
 const useStyles = makeStyles((theme) => ({
 
@@ -100,7 +101,14 @@ function Register () {
                 email: email,
                 password: password,
             }
-            
+            mongoose
+            .connect("mongodb+srv://Paul:ogIY0lMxV43MVH31@testing.35ywp.mongodb.net/time-keeper?retryWrites=true&w=majority", {
+                useNewUrlParser: true,
+                useCreateIndex: true,
+                useFindAndModify: false
+            })
+            .then(() => console.log("WORKED"))
+            .catch(err => console.log(err));
             // let data = JSON.stringify(newUser, null, 2);
 
             // fs.writeFile('newUser.json', data, (err) => {
