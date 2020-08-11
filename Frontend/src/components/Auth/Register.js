@@ -93,14 +93,53 @@ function Register () {
     }
 
 
+    const sendToAPI = async (username, email, password) => {
+        try {
+                const newUser = {
+                    username: username,
+                    email: email,
+                    password: password
+                }
+                let hasError = false;
+                const response = await fetch('http://localhost:5000/user', {
+                    method: 'POST',
+                    body: JSON.stringify(newUser),
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    }
+                });
+
+                if (!response.ok) {
+                    hasError = true;
+                }
+
+                const responseData = await response.json();
+
+                if (hasError) {
+                    throw new Error(responseData.message);
+                }
+                
+            } catch (error) {
+                alert(error.message || 'something went wrong');
+            };
+    }
+
     const onSubmit = event => {
+        
+
         if (password === passwordConifrmation && username && email) {
-            console.log("submitted")
-            let newUser = {
-                userName: username,
-                email: email,
-                password: password,
-            }
+
+
+                sendToAPI(username, email, password)
+                //console.log("got this far")
+
+
+            // console.log("submitted")
+            // let newUser = {
+            //     userName: username,
+            //     email: email,
+            //     password: password,
+            // }
             
             // let data = JSON.stringify(newUser, null, 2);
 
@@ -111,11 +150,12 @@ function Register () {
             //This wont work because it's running in the browser
             //have to actually push to a database.
             //console.log(newUser)
-        } else if (password !== passwordConifrmation) {
-            alert("Passwords do not match. Please make sure the password and password confirmation fields are the same.")
-        } else {
-            alert("Not submitted, please fill the form out.")
-        }
+        // } else if (password === passwordConifrmation) {
+        //     alert("Passwords do not match. Please make sure the password and password confirmation fields are the same.")
+        // } else {
+        //     alert("Not submitted, please fill the form out.")
+        // }
+        } else {alert("Didn't work")}
         
     }
 
