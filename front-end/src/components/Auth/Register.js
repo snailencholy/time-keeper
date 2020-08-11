@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 import clock from '../../assets/correct-clock.png';
 
-import mongoose from "mongoose"; //Not going to work. need to build a backend first.
+
 
 
 const useStyles = makeStyles((theme) => ({
