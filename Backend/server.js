@@ -1,6 +1,14 @@
 const express = require('express');
+const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
+
+
+//Crypto things
+const algorithm = 'aes-256-cbc';
+const key = crypto.randomBytes(32);
+const iv = crypto.randomBytes(16);
+
 
 const app = express();
 

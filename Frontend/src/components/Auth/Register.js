@@ -125,7 +125,10 @@ function Register () {
     }
 
     const onSubmit = event => {
-        
+        setEmail("");
+        setUsername("");
+        setPassword("");
+        setPasswordConifrmation("");
 
         if (password === passwordConifrmation && username && email) {
 
