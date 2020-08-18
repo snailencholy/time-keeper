@@ -3,6 +3,8 @@ const crypto = require('crypto');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 
+const usersRoutes = require("./routes/users-routes");
+
 
 //Crypto things
 const algorithm = 'aes-256-cbc';
@@ -15,6 +17,8 @@ const app = express();
 const DUMMY_USERS = [];
 
 app.use(bodyParser.json());
+
+app.use(usersRoutes);
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

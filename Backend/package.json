@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,8 @@
     "url": "https://github.com/snailencholy/time-keeper/issues"
   },
   "homepage": "https://github.com/snailencholy/time-keeper#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
   "description": ""
 }
