@@ -1,14 +1,17 @@
 const express = require("express");
+const uuid = require('uuid');
 
 const router = express.Router();
 
 const DUMMY_USERS = [];
 
-router.get('/users', (req, res, next) => {
+
+
+router.get('/user-list', (req, res, next) => {
     res.status(200).json({users: DUMMY_USERS})
 });
 
-router.post('/user',(req, res, next) => {
+router.post('/register',(req, res, next) => {
     const {username, email, password} = req.body;
 
     if(!username || username.trim().length === 0 || !email || email.trim().length === 0 || !password || password.trim().length === 0) {

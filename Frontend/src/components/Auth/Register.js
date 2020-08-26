@@ -101,7 +101,7 @@ function Register () {
                     password: password
                 }
                 let hasError = false;
-                const response = await fetch('http://localhost:5000/user', {
+                const response = await fetch('http://localhost:5000/api/users/register', {
                     method: 'POST',
                     body: JSON.stringify(newUser),
                     headers: {
